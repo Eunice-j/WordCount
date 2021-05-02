@@ -4,10 +4,10 @@
 #include <string.h>
 
 #define count 2
-char c[count] = { '-','c' };	//统计字符
-char w[count] = { '-','w' };	//统计单词
+char c[count] = { '-','c' };	//字符
+char w[count] = { '-','w' };	//单词
 
-int Calculate(FILE* file, int* charNum, int* wordNum);
+int Cal(FILE* file, int* charNum, int* wordNum);
 int main(int argc, char* argv[])
 {
 	int charNum = 0, wordNum = 0;
@@ -15,13 +15,13 @@ int main(int argc, char* argv[])
 	char parameter[count + 1];
 	FILE* file;
 	scanf("%s", &parameter);
-	file = fopen("input.txt", "r");//打开文件
+	file = fopen("input.txt", "r");
 	if (file == NULL)
 	{
 		printf("文件为空，请检查文件路径是否正确！！！");
 		return 0;
 	}
-	Calculate(file, &charNum, &wordNum);
+	Cal(file, &charNum, &wordNum);
 
 	if (strcmp(parameter, c) == 0) // -c
 	{
@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-int Calculate(FILE* file, int* charNum, int* wordNum) {
+int Cal(FILE* file, int* charNum, int* wordNum) {
 	int flag = 0;//间隔标记，处于单词中置1，处于间隔中置0
 	char temp;
 	while ((temp = fgetc(file)) != EOF)
